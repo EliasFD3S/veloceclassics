@@ -8,4 +8,6 @@ Also taught me a bit of SQL throughout the process (the database is missing).
 
 Doubt there is something to take from this but wanted to upload it. 
 
+Features a complete admin panel with a login system.
+
 (60% of the thing is AI generated don't get me wrong) 
