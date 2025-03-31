@@ -1,0 +1,27 @@
+# Activer le moteur de réécriture
+RewriteEngine On
+
+# Empêcher l'affichage du contenu des répertoires
+Options -Indexes
+
+# Protection des fichiers sensibles uniquement
+<FilesMatch "^\.env|\.sql$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# En-têtes de sécurité de base
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set X-Frame-Options "SAMEORIGIN"
+</IfModule>
+
+# Redirection des erreurs
+ErrorDocument 403 /admin/public/login.html
+ErrorDocument 404 /admin/public/login.html
+
+# Forcer HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+ 

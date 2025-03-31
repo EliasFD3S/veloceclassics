@@ -1,0 +1,28 @@
+# Permettre l'accès à l'API
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Permettre l'accès depuis le domaine autorisé
+    SetEnvIf Origin "^https?://velocee\.cluster029\.hosting\.ovh\.net$" ALLOWED_ORIGIN=$0
+    Header set Access-Control-Allow-Origin %{ALLOWED_ORIGIN}e env=ALLOWED_ORIGIN
+    Header set Access-Control-Allow-Credentials "true"
+    
+    # Headers pour les requêtes CORS
+    Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+</IfModule>
+
+# Permissions de base
+<Files ~ "\.(php)$">
+    Order Allow,Deny
+    Allow from all
+    Require all granted
+</Files>
+
+# Protection du dossier
+Options -Indexes
+DirectoryIndex index.php
+
+# Forcer HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301] 

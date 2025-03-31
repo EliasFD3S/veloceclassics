@@ -1,0 +1,1243 @@
+:root {
+    /* Couleurs d'accent */
+    --gold: #D4AF37;
+    --gold-light: #E5C158;
+    --gold-dark: #B8860B;
+    
+    /* Couleurs de base */
+    --black: #212529;
+    --background-light: #F8F9FA;    /* ancien --dark */
+    --background-white: #FFFFFF;     /* ancien --dark-light */
+    --background-subtle: #F5F6F7;  /* Nouvelle nuance intermédiaire */
+    --gray: #6C757D;
+    --text-dark: #212529;           /* ancien --white */
+    --text-gray: #333333;           /* ancien --off-white */
+}
+
+/* Styles généraux */
+body {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 300;
+    color: var(--text-gray);
+    background-color: var(--black);
+    line-height: 1.8;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 600;
+    color: var(--text-dark);
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Navbar */
+.navbar {
+    background-color: rgba(10, 10, 10, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-brand img {
+    height: 45px;
+    filter: brightness(1.2);
+}
+
+/* Navbar - Ajout des styles pour l'uppercase */
+.navbar-nav .nav-link {
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    padding: 0.5rem 1rem;
+}
+
+.navbar-brand {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+/* Carrousel */
+#accueil {
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+.carousel {
+    height: 100vh;
+    position: relative;
+    touch-action: pan-y pinch-zoom;
+}
+
+.carousel-inner {
+    height: 100%;
+    touch-action: pan-y pan-x;
+    -webkit-overflow-scrolling: touch;
+}
+
+.carousel-item {
+    height: 100vh;
+    position: relative;
+    touch-action: pan-y pan-x;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    filter: brightness(0.5) contrast(1.1);
+    pointer-events: none;
+}
+
+.carousel-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15px;
+    z-index: 2;
+    transform: none;
+}
+
+.carousel-caption h1 {
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: var(--gold);
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+/* Sections */
+section {
+    padding: 80px 0;
+    margin-top: 0;
+    background-color: var(--background-light);
+}
+
+section#accueil {
+    background-color: transparent;
+}
+
+section#vehicules {
+    background-color: #212529;
+}
+
+section#devis {
+    background-color: var(--background-light);
+}
+
+section#about {
+    background-color: #212529;
+}
+
+section#contact {
+    background-color: var(--background-light);
+}
+
+section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, var(--gold), var(--gold-light));
+    border-radius: 2px;
+}
+
+/* Cards */
+.card {
+    background-color: var(--background-white);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.card-title {
+    color: var(--gold);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.card-text {
+    color: var(--text-gray);
+}
+
+/* Boutons */
+.btn {
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, var(--gold), var(--gold-light));
+    border: none;
+    color: var(--black);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, var(--gold-light), var(--gold));
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+/* Formulaires */
+.form-control {
+    background-color: var(--background-white);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 15px;
+    color: var(--text-dark);
+}
+
+.form-control:focus {
+    background-color: var(--background-white);
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+    color: var(--text-dark);
+}
+
+.form-control::placeholder {
+    color: var(--gray);
+}
+
+/* Footer */
+footer {
+    background-color: #0a0a0a;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+footer p {
+    color: var(--background-light);
+    font-size: 0.9rem;
+}
+
+.dev-link {
+    color: var(--gold);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.dev-link:hover {
+    color: var(--gold-light);
+}
+
+@media (max-width: 768px) {
+    footer .row > div {
+        margin: 0.5rem 0;
+    }
+}
+
+/* Animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background-light);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gold);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gold-dark);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .carousel-caption {
+        padding: 0 20px;
+    }
+    
+    .carousel-caption h1 {
+        font-size: 2.5rem;
+    }
+    
+    .carousel-caption p {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .carousel-indicators {
+        margin-bottom: 1rem;
+    }
+    
+    section h2 {
+        font-size: 2.2rem;
+    }
+    
+    section {
+        padding: 60px 0;
+    }
+}
+
+/* Social Links */
+.social-links {
+    margin-top: 2rem;
+    display: flex;
+    gap: 15px;
+}
+
+.social-link {
+    color: var(--gold);
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    background: var(--background-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    padding: 0;
+    line-height: 0;
+    position: relative;
+}
+
+.social-link i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.social-link:hover {
+    background: var(--gold);
+    color: var(--background-white);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+/* Styles pour le formulaire de devis */
+#devis .h4 {
+    color: var(--gold);
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Card du détail de calcul */
+.calculation-details .card {
+    background-color: var(--background-white);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.calculation-details .card-body {
+    padding: 1.5rem;
+}
+
+.calculation-details span {
+    font-size: 1rem;
+    color: var(--text-gray);
+}
+
+.border-gold {
+    border-color: var(--gold) !important;
+    opacity: 0.3;
+}
+
+/* Groupes de champs */
+#devis .mb-4 {
+    background-color: var(--background-white);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Style des inputs */
+#devis .form-control {
+    background-color: var(--background-white);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0.8rem 1rem;
+    color: var(--text-dark);
+}
+
+#devis .form-control:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.15);
+}
+
+/* Style du bouton */
+#devis .btn-primary {
+    padding: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #devis .col-md-8 {
+        padding: 0 1rem;
+    }
+    
+    .calculation-details span {
+        font-size: 0.9rem;
+    }
+}
+
+/* Styles pour le détail du calcul */
+.calculation-details .text-muted {
+    color: rgba(255, 255, 255, 0.5) !important;
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+.calculation-details .card-body > div:not(:last-child) {
+    margin-bottom: 0.8rem;
+}
+
+.calculation-details .fw-bold span {
+    color: var(--gold);
+    font-size: 1.1rem;
+}
+
+/* Animation lors du calcul */
+.calculation-details .card {
+    transition: all 0.3s ease;
+}
+
+.calculation-details .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Style pour les montants */
+.calculation-details [class*="-fee"],
+.calculation-details .vehicle-price,
+.calculation-details .total-price {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+}
+
+/* Ajustement spécifique pour la première section (accueil/carousel) */
+section#accueil {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+/* Pour un défilement plus doux lors des clics sur les ancres */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+/* Section À Propos */
+
+#about h3 {
+    color: var(--gold);
+    font-family: 'Rubik', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    letter-spacing: 1px;
+}
+
+#about .lead {
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--background-white);
+    font-weight: 400;
+}
+
+#about .feature-item {
+    background-color: var(--gold);
+    padding: 2rem;
+    border-radius: 15px;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+#about .feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+}
+
+#about .feature-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1.5rem;
+    background: var(--background-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#about .feature-icon i {
+    font-size: 1.5rem;
+    color: var(--gold);
+}
+
+#about .feature-item h4 {
+    color: var(--background-white);
+    font-family: 'Rubrik', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+#about .feature-item p {
+    color: var(--background-white);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    #about .lead {
+        font-size: 1rem;
+    }
+    
+    #about .feature-item {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Section Contact */
+#contact {
+    background-color: var(--background-light);
+}
+
+/* Info Cards */
+.info-card {
+    background-color: var(--background-white);
+    padding: 1.5rem;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.info-card .icon-box {
+    width: 50px;
+    height: 50px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+}
+
+.info-card .icon-box i {
+    color: var(--background-light);
+    font-size: 1.2rem;
+}
+
+.info-card h4 {
+    color: var(--gold);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.info-card p {
+    color: var(--text-gray);
+    margin-bottom: 0;
+}
+
+/* Formulaire */
+.contact-form {
+    background-color: var(--background-white);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-floating > .form-control {
+    background-color: var(--background-light);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--text-dark);
+}
+
+.form-floating > .form-control:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 0.2rem rgba(255, 215, 0, 0.15);
+}
+
+.form-floating > label {
+    color: var(--text-gray);
+}
+
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+    color: var(--gold);
+    opacity: 0.8;
+}
+
+.btn-primary {
+    background: var(--gold);
+    border: none;
+    color: var(--background-light);
+    padding: 0.8rem 2rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    background: var(--background-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.social-link:hover {
+    background: var(--gold);
+    color: var(--background-white);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .contact-info {
+        margin-bottom: 2rem;
+    }
+}
+
+/* Style du sélecteur de véhicule */
+.vehicle-select-wrapper {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+#vehicle-select {
+    width: 100%;
+    padding: 15px;
+    padding-right: 40px;
+    background-color: transparent;
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    color: var(--text-dark);
+    font-family: 'Rubik', sans-serif;
+    font-size: 1rem;
+    appearance: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#vehicle-select:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+}
+
+#vehicle-select option {
+    background-color: var(--background-light);
+    color: var(--text-dark);
+    padding: 10px;
+}
+
+/* Flèche personnalisée */
+.vehicle-select-wrapper::after {
+    content: '\f107';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gold);
+    pointer-events: none;
+    font-size: 1.2rem;
+}
+
+/* Style au survol */
+#vehicle-select:hover {
+    border-color: var(--gold-light);
+}
+
+/* Style du label */
+.vehicle-select-wrapper label {
+    color: var(--gold);
+    font-family: 'Rubik', sans-serif;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+/* Style des inputs et select du devis */
+.form-group {
+    margin-bottom: 2rem;
+}
+
+.form-group h3 {
+    color: var(--gold);
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+.input-group {
+    margin-bottom: 1rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--background-white);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 8px;
+    color: var(--text-dark);
+    font-family: 'Rubik', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+}
+
+/* Style spécifique du select */
+.vehicle-select-wrapper {
+    position: relative;
+    margin-top: 1rem;
+}
+
+.vehicle-select-wrapper label {
+    display: block;
+    color: var(--text-gray);
+    margin-bottom: 0.5rem;
+    font-family: 'Rubik', sans-serif;
+    font-size: 0.9rem;
+}
+
+.vehicle-select {
+    width: 100%;
+    padding: 1rem;
+    padding-right: 2.5rem;
+    background-color: var(--background-white);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 8px;
+    color: var(--text-dark);
+    font-family: 'Rubik', sans-serif;
+    appearance: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.vehicle-select:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+}
+
+.vehicle-select-wrapper::after {
+    content: '\f107';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    color: var(--gold);
+    pointer-events: none;
+}
+
+/* Style des options */
+.vehicle-select option {
+    background-color: var(--background-light);
+    color: var(--text-dark);
+    padding: 0.5rem;
+}
+
+/* Style des labels du formulaire */
+.form-label {
+    color: var(--gold);
+    font-family: 'Rubik', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Ajout de la flèche au label */
+.form-label::after {
+    content: '\f054'; /* Flèche Font Awesome */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 0.7rem;
+    color: var(--gold);
+}
+
+/* Style du label "Sélectionnez un véhicule" */
+.vehicle-select-wrapper label {
+    color: var(--gold);
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+/* Style du select et de sa flèche */
+.vehicle-select-wrapper {
+    position: relative;
+}
+
+.vehicle-select {
+    width: 100%;
+    padding: 15px;
+    padding-right: 40px; /* Espace pour la flèche */
+    background-color: var(--background-white);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 8px;
+    color: var(--text-dark);
+    font-family: 'Rubik', sans-serif;
+    appearance: none;
+    cursor: pointer;
+}
+
+/* Flèche dans le champ select */
+.vehicle-select-wrapper::after {
+    content: '\f107'; /* Flèche vers le bas */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 15px;
+    top: calc(50% + 10px); /* Ajusté pour tenir compte du label */
+    transform: translateY(-50%);
+    color: var(--gold);
+    pointer-events: none;
+    font-size: 1.2rem;
+} 
+
+/* Style des cards véhicules */
+.vehicle-card {
+    background-color: var(--background-white);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.vehicle-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.vehicle-image {
+    height: 250px;
+    overflow: hidden;
+}
+
+.vehicle-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.vehicle-info {
+    padding: 1.5rem;
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-logo {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: -30px;
+    left: 1.5rem;
+    background: var(--background-light);
+    border-radius: 8px;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand-logo img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.vehicle-details {
+    margin-top: 1rem;
+    flex-grow: 1;
+}
+
+.vehicle-name {
+    color: var(--gold);
+    font-size: 1.2rem;
+    margin-bottom: 0.25rem;
+}
+
+.vehicle-year {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    font-weight: 800;
+}
+
+.vehicle-description {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.btn-photos {
+    background-color: var(--gold);
+    color: var(--background-light);
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    align-self: flex-start;
+    margin-top: auto;
+}
+
+.btn-photos:hover {
+    background-color: var(--gold-light);
+} 
+
+/* Assurer une transition fluide entre les sections */
+section:not(:first-child) {
+    border-top: 1px solid rgba(255, 255, 255, 0.05); /* Ajouter une légère bordure entre les sections */
+} 
+
+/* Section Véhicules */
+#vehicules {
+    background-color: var(--background-subtle);
+    position: relative;
+}
+
+/* Ajout d'un léger overlay pour améliorer la lisibilité */
+#vehicules::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    pointer-events: none;
+}
+
+/* S'assurer que le contenu reste au-dessus de l'overlay */
+#vehicules .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Section Devis */
+#devis {
+    background-color: var(--background-light);
+}
+
+/* Section À Propos */
+#about {
+    background-color: var(--background-white);
+}
+
+/* Section Contact */
+#contact {
+    background-color: var(--background-light);
+}
+
+/* Carrousel */
+.carousel-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15px;
+    z-index: 2;
+}
+
+/* Indicateurs du carrousel */
+.carousel-indicators {
+    position: absolute;
+    bottom: 20px;     /* Position depuis le bas */
+    z-index: 5;       /* Z-index plus élevé que la caption */
+    margin: 0;        /* Reset des marges */
+    padding: 0 15px;  /* Padding cohérent */
+}
+
+/* Contrôles (flèches) du carrousel */
+.carousel-control-prev,
+.carousel-control-next {
+    z-index: 5;       /* Z-index plus élevé que la caption */
+    width: 10%;
+}
+
+/* Reset complet du modal */
+#galleryModal {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+#galleryModal .modal-dialog {
+    max-width: 800px;
+    width: 100%;
+    margin: 30px auto;
+    position: relative;
+}
+
+#galleryModal .modal-content {
+    background: transparent;
+    border: none;
+    height: 600px !important;
+    max-height: 600px !important;
+}
+
+#galleryModal .modal-body {
+    padding: 0;
+    height: 600px !important;
+    max-height: 600px !important;
+    position: relative;
+}
+
+/* Style des images et du carrousel */
+#galleryModal .carousel,
+#galleryModal .carousel-inner,
+#galleryModal .carousel-item,
+#galleryModal .carousel-item.active {
+    height: 600px !important;
+    max-height: 600px !important;
+}
+
+#galleryModal .carousel-item img {
+    max-width: 800px;
+    width: auto;
+    height: 600px !important;
+    max-height: 600px !important;
+    margin: 0 auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Contrôles du carrousel */
+body #galleryModal .modal-body .carousel-control-prev,
+body #galleryModal .modal-body .carousel-control-next {
+    width: 40px !important;
+    height: 40px !important;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    opacity: 0.8;
+    z-index: 1050 !important;
+}
+
+body #galleryModal .modal-body .carousel-control-prev {
+    left: 10px !important;
+}
+
+body #galleryModal .modal-body .carousel-control-next {
+    right: 10px !important;
+}
+
+/* Icônes des contrôles */
+body #galleryModal .modal-body .carousel-control-prev-icon,
+body #galleryModal .modal-body .carousel-control-next-icon {
+    width: 20px !important;
+    height: 20px !important;
+}
+
+/* Indicateurs du carrousel */
+#galleryModal .carousel-indicators {
+    position: absolute !important;
+    bottom: 20px !important;
+    left: 0 !important;
+    right: 0 !important;
+    margin: 0 auto !important;
+    z-index: 1050 !important;
+}
+
+#galleryModal .carousel-indicators li {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    width: 10px !important;
+    height: 10px !important;
+    margin: 0 5px !important;
+}
+
+#galleryModal .carousel-indicators .active {
+    background-color: #fff;
+}
+
+/* Bouton fermeture */
+#galleryModal .close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: #fff;
+    z-index: 1;
+    font-size: 2rem;
+    opacity: 1;
+}
+
+.services-optionnels {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: var(--background-white);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.services-optionnels h4 {
+    margin-bottom: 15px;
+}
+
+.form-check {
+    margin-left: 10px;
+}
+
+/* Style personnalisé pour les checkboxes des services */
+.service-checkbox {
+    width: 1.2em;
+    height: 1.2em;
+    margin-top: 0.25em;
+    vertical-align: top;
+    background-color: var(--background-white);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border: 1px solid var(--gold);
+    appearance: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+}
+
+.service-checkbox:checked {
+    background-color: var(--gold);
+    border-color: var(--gold);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+}
+
+.service-checkbox:focus {
+    border-color: var(--gold-light);
+    box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
+}
+
+.service-checkbox:hover {
+    border-color: var(--gold-light);
+}
+
+/* Style du label associé */
+.form-check-label {
+    color: var(--text-dark);
+    font-weight: 400;
+    padding-left: 0.5rem;
+    cursor: pointer;
+}
+
+.services-optionnels .form-check {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding-bottom: 1rem;
+}
+
+.services-optionnels .form-check:last-child {
+    border-bottom: none;
+}
+
+.services-optionnels .text-muted {
+    line-height: 1.4;
+}
+
+.services-optionnels .form-check-label {
+    font-weight: 500;
+    color: var(--text-dark);
+    margin-bottom: 0.2rem;
+}
+
+

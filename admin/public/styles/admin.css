@@ -1,0 +1,590 @@
+:root {
+    --sidebar-width: 250px;
+    --dark-bg: #1a1a1a;
+    --darker-bg: #141414;
+    --light-text: #ffffff;
+    --border-color: #333333;
+    --accent-color: #FFD700;
+    --hover-bg: #2a2a2a;
+    --nav-item-height: 45px;
+    --gold: #FFD700;
+}
+
+/* Reset et styles de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+    line-height: 1.6;
+}
+
+/* Layout principal */
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+/* Sidebar */
+.sidebar {
+    width: var(--sidebar-width);
+    position: fixed;
+    height: 100vh;
+    background: linear-gradient(180deg, var(--darker-bg) 0%, #1a1a1a 100%);
+    padding: 1.5rem 1rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: #1a1a1a;
+    color: white;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+.logo-container {
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.admin-logo {
+    width: 130px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.admin-logo:hover {
+    transform: scale(1.02);
+}
+
+/* Menu de navigation */
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0 0.5rem;
+    height: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+.menu-item {
+    height: var(--nav-item-height);
+    padding: 0 1rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    color: #8a8a8a;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    position: relative;
+    z-index: 3;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.menu-item i {
+    width: 20px;
+    margin-right: 12px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.menu-item span {
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+/* Effet hover */
+.menu-item:hover {
+    color: var(--light-text);
+    background: rgba(255, 255, 255, 0.03);
+    transform: translateX(5px);
+}
+
+.menu-item:hover i {
+    color: var(--gold);
+    transform: scale(1.1);
+}
+
+/* Item actif */
+.menu-item.active {
+    background: rgba(255, 215, 0, 0.1);
+    color: var(--light-text);
+    font-weight: 500;
+}
+
+.menu-item.active i {
+    color: var(--gold);
+}
+
+.menu-item.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 20px;
+    background: var(--gold);
+    border-radius: 0 4px 4px 0;
+}
+
+/* Bouton de déconnexion */
+.menu-item.logout {
+    cursor: pointer;
+    position: relative;
+    z-index: 100;
+    margin-top: auto;
+    background-color: var(--darker-bg);
+    color: var(--light-text);
+    transition: background-color 0.3s ease;
+}
+
+.menu-item.logout:hover {
+    background-color: var(--hover-bg);
+    color: var(--accent-color);
+}
+
+.menu-item.logout i {
+    color: #ff4d4d;
+    transition: all 0.3s ease;
+}
+
+.menu-item.logout:hover i {
+    color: #ff6b6b;
+    transform: scale(1.1);
+}
+
+/* Suppression des styles par défaut des liens */
+.menu-item.logout a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Animation subtile au survol */
+@keyframes menuHover {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.menu-item:hover {
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.03) 0%,
+        rgba(255, 255, 255, 0.05) 50%,
+        rgba(255, 255, 255, 0.03) 100%
+    );
+    background-size: 200% 200%;
+    animation: menuHover 3s ease infinite;
+}
+
+/* Contenu principal */
+.content {
+    flex: 1;
+    padding: 1.5rem;
+}
+
+/* En-têtes de section */
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: linear-gradient(
+        to right,
+        rgba(255, 215, 0, 0.1),
+        rgba(255, 215, 0, 0.05)
+    );
+    border-radius: 12px;
+    border-left: 4px solid var(--gold);
+}
+
+.content-header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--light-text);
+    margin: 0;
+}
+
+/* Boutons d'ajout */
+.add-vehicle-btn,
+.add-brand-btn,
+[data-bs-toggle="modal"] {
+    background-color: var(--gold) !important;
+    color: var(--darker-bg) !important;
+    padding: 0.5rem 1rem !important;
+    border: none !important;
+    border-radius: 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+}
+
+.add-vehicle-btn:hover,
+.add-brand-btn:hover,
+[data-bs-toggle="modal"]:hover {
+    background-color: #ffd700e6 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2) !important;
+}
+
+/* Pour l'icône dans le bouton */
+.add-vehicle-btn i,
+.add-brand-btn i,
+[data-bs-toggle="modal"] i {
+    color: var(--darker-bg) !important;
+}
+
+/* Tables */
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.table th {
+    background-color: rgba(255, 215, 0, 0.1);
+    padding: 1rem;
+    text-align: left;
+    font-weight: 500;
+    border-bottom: 2px solid var(--gold);
+    color: var(--gold);
+}
+
+.table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.table tbody tr {
+    background-color: var(--dark-bg);
+    transition: all 0.3s ease;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(255, 215, 0, 0.05);
+    transform: translateX(5px);
+}
+
+/* Sections */
+.section-vehicules,
+.section-marques {
+    background-color: var(--darker-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    
+    .content {
+        margin-left: 0;
+    }
+}
+
+/* Utilitaires */
+.d-none {
+    display: none;
+}
+
+.active-section {
+    display: block;
+}
+
+/* Assurez-vous que les éléments cliquables sont au-dessus */
+.nav-item.menu-item {
+    position: relative;
+    z-index: 3;
+    cursor: pointer;
+}
+
+.add-vehicle-btn,
+.add-brand-btn {
+    position: relative;
+    z-index: 3;
+}
+
+/* Correction des styles pour le modal et le backdrop */
+.modal-backdrop {
+    z-index: 1040 !important;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.modal {
+    z-index: 1050 !important;
+}
+
+.modal-dialog {
+    z-index: 1051 !important;
+    pointer-events: auto !important;
+}
+
+.modal-content {
+    background-color: var(--darker-bg) !important;
+    position: relative;
+    z-index: 1052 !important;
+    pointer-events: auto !important;
+}
+
+/* Suppression des styles qui peuvent interférer */
+.modal.show {
+    background-color: transparent !important;
+    display: block !important;
+}
+
+/* Correction pour le backdrop */
+.modal-backdrop.show {
+    opacity: 0.5 !important;
+    pointer-events: auto !important;
+}
+
+/* Correction pour les boutons et éléments interactifs */
+button, 
+.btn,
+select,
+input,
+.nav-item {
+    position: relative;
+    z-index: 2;
+}
+
+/* Assurez-vous que les tableaux sont cliquables */
+.table {
+    position: relative;
+    z-index: 1;
+}
+
+/* Correction pour les sections */
+section[class^="section-"] {
+    position: relative;
+    z-index: 1;
+}
+
+.vehicle-logo {
+    max-width: 100%;
+    max-height: 50px;
+    object-fit: contain;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #dc3545;
+    border: none;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+
+/* Styles pour la prévisualisation des images */
+.image-preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.image-preview-item {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.image-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.remove-image {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(255, 0, 0, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+}
+
+.remove-image i {
+    color: white;
+    font-size: 12px;
+}
+
+/* Styles pour les modals */
+.modal-content {
+    background-color: #fff !important;
+}
+
+/* Style pour le texte dans les modals */
+.modal-content,
+.modal-content label,
+.modal-content input,
+.modal-content select,
+.modal-content textarea,
+.modal-content .form-text,
+.modal-title {
+    color: #000 !important;
+}
+
+/* Style pour les inputs et selects */
+.modal .form-control {
+    background-color: #fff !important;
+    border: 1px solid #ced4da !important;
+    color: #000 !important;
+}
+
+.modal .form-control:focus {
+    background-color: #fff !important;
+    color: #000 !important;
+    border-color: var(--gold) !important;
+    box-shadow: 0 0 0 0.2rem rgba(255, 215, 0, 0.25) !important;
+}
+
+/* Style pour les options dans les selects */
+.modal select option {
+    background-color: #fff !important;
+    color: #000 !important;
+}
+
+/* Styles pour les formulaires dans les modals */
+.modal .form-control {
+    background-color: var(--darker-bg);
+    border: 1px solid var(--border-color);
+    color: var(--light-text);
+}
+
+.modal .form-control:focus {
+    background-color: var(--darker-bg);
+    color: var(--light-text);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.2rem rgba(255, 215, 0, 0.25);
+}
+
+.modal .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Style pour les labels et textes d'aide */
+.modal label, 
+.modal .form-text {
+    color: var(--light-text);
+}
+
+/* Style pour le bouton de fermeture */
+.modal .btn-close-white {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* Style pour les selects */
+.modal select option {
+    background-color: var(--darker-bg);
+    color: var(--light-text);
+}
+
+/* Styles pour les images dans le modal des véhicules */
+.current-image-container {
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+}
+
+.current-image-preview {
+    max-width: 100px;
+    max-height: 100px;
+    margin-bottom: 5px;
+    object-fit: cover;
+}
+
+.current-image-container .btn-danger {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+.current-image-container .btn-danger:hover {
+    opacity: 1;
+}
+
+.form-text.text-muted {
+    color: #ffffff; /* Ajustez cette couleur pour plus de contraste si nécessaire */
+}
+
+.default-value-tooltip {
+    display: none;
+    margin-top: 0.25rem;
+    color: #b0b0b0; /* Ajustez cette couleur pour plus de contraste si nécessaire */
+}
+
+.default-value-tooltip i {
+    margin-right: 0.25rem;
+}
+
+.constants-form .form-text {
+    display: inline-block;
+    margin-top: 0.25rem;
+}
+
+.constants-form .alert {
+    margin-bottom: 1rem;
+}
